@@ -1,6 +1,8 @@
 const {test,expect} = require('@playwright/test');
 const { clear } = require('node:console');
 
+test.describe('SauceDemo Login Functionality', () => {
+    
 test.beforeEach(async ({page}) =>{
 await page.goto('https://www.saucedemo.com/');
 });
@@ -33,3 +35,4 @@ test('Valid Login', async ({page})=> {
         await expect(errorMessage).toHaveText('Epic sadface: Username and password do not match any user in this service')
         console.log(errorMessage);
     });
+});
