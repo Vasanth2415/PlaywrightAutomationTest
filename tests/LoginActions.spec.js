@@ -5,7 +5,7 @@ test.beforeEach(async ({page}) =>{
 await page.goto('https://www.saucedemo.com/');
 });
 
-
+// Valid Login Test
 test('Valid Login', async ({page})=> {
 
     await page.locator('#user-name').fill('standard_user');
@@ -16,8 +16,8 @@ test('Valid Login', async ({page})=> {
     console.log(await page.url());
 })
 
-
-    test.only('Invalid Login', async ({page}) => {
+    // Invalid Login Test
+    test ('Invalid Login', async ({page}) => {
 
         await page.locator('#user-name').fill('standard_user');
         await page.locator('#password').fill('secret');

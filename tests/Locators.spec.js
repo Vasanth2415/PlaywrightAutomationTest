@@ -1,5 +1,6 @@
 const {test,expect} = require('@playwright/test');
 
+// Verify the Login Page elements and their placeholders
 test("Verify login page elements and placeholders", async({page}) =>{
 
     await page.goto('https://www.saucedemo.com/');

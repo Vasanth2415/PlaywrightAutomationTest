@@ -1,6 +1,6 @@
 const {test,expect} = require ('@playwright/test');
 
-// Launch Google
+// Launch Google page and verify the title
 test("Launch Google and verify title", async({page}) => {
 
 await page.goto('https://www.google.com/')
@@ -14,7 +14,7 @@ await expect(page).toHaveTitle('Google');
 });
 
 
-// Launch A4
+// Launch A4 page and verify the title
 test("Launch A4 Page and Get Title", async({page}) => {
 
     await page.goto('https://afourtech.com/');
