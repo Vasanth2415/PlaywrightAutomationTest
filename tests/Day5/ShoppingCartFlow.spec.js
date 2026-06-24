@@ -89,5 +89,6 @@ test("Verify the Sort products, add items to cart, and verify cart contents", as
     await expect(cartItems.first()).toBeVisible();
 
     console.log('Items in the Cart: ', await cartItems.allTextContents());
+    console.log('*******************');
 
 });
