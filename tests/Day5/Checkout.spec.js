@@ -54,15 +54,15 @@ test("Add product, checkout, complete order and validate success message", async
     // Finish order
     await page.locator('#finish').click();
 
-// Validate success page
+// Validate the success page
   await expect(page).toHaveURL(/checkout-complete.html/);
 
-// Validate success message
+// Validate the success message
 const orderHeader = await page.locator('.complete-header').textContent();
 console.log('Order Header: ', orderHeader);
 await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
 
-// Validate Confirmation message
+// Validate the Confirmation message
 const confirmationMessage = await page.locator('.complete-text').textContent();
 console.log('Confirmation Message: ', confirmationMessage);
 await expect(page.locator('.complete-text')).toHaveText('\n Your order has been dispatched, and will arrive just as fast as the pony can get there!');

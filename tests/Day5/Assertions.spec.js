@@ -42,7 +42,7 @@ test("Verify the Inventory after login", async ({ page }) => {
     await expect(inventory).toBeVisible();
     
 
-    // Verify atleast 6 inventory items are present on the page
+    // Verify 6 inventory items are present on the page
     const productNames = page.locator('.inventory_item_name');
     const count = await productNames.count();
 
