@@ -1,11 +1,11 @@
-const { test: base, expect } = require("@playwright/test");
-const { LoginPage } = require("../pages/LoginPage");
-const { InventoryPage } = require("../pages/InventoryPage");
-const { CartPage } = require("../pages/CartPage");
-const { CheckoutPage } = require("../pages/CheckoutPage");
-const { CheckoutCompletePage } = require("../pages/CheckoutCompletePage");
+const { test: base, expect } = require('@playwright/test');
+const { LoginPage } = require('../pages/LoginPage');
+const { InventoryPage } = require('../pages/InventoryPage');
+const { CartPage } = require('../pages/CartPage');
+const { CheckoutPage } = require('../pages/CheckoutPage');
+const { CheckoutCompletePage } = require('../pages/CheckoutCompletePage');
 
-const testData = require("../utils/testData");
+const testData = require('../utils/testData');
 
 const test = base.extend({
   loggedInPage: async ({ page }, use) => {
@@ -33,7 +33,7 @@ const test = base.extend({
   },
 
   checkoutPage: async ({ page }, use) => {
-    await use(new checkoutPage(page));
+    await use(new CheckoutPage(page));
   },
 
   checkoutCompletePage: async({page},use) =>{
