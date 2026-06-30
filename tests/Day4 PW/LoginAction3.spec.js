@@ -1,4 +1,4 @@
-const { test, expect } = require('../../fixtures/loginFixture');
+const { test, expect } = require('../../Fixtures/loginFixture');
 
 
 test.describe('SauceDemo Authenticated User Tests', () => {

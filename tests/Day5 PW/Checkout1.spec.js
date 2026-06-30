@@ -1,7 +1,7 @@
 const { CheckoutCompletePage } = require('../../pages/CheckoutCompletePage');
 const {test,expext}= require('../../Fixtures/loginFixture');
 
-const testData  = require('../utils/testData');
+const testData  = require('../../utils/testData');
 
 test('Add product, checkout, complete order and validate success message', async({page,inventoryPage,cartPage,checkoutPage,checkoutCompletePage}) => {
 
