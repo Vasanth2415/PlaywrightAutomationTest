@@ -1,7 +1,7 @@
 module.exports = {
     url: 'https://www.saucedemo.com/',
-    Username: 'standard_user',
-    Password: 'secret_sauce',
+    username: 'standard_user',
+    password: 'secret_sauce',
     invalidPassword: 'secret',
 
     googleUrl: 'https://www.google.com/',

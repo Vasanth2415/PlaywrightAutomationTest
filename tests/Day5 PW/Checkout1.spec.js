@@ -1,9 +1,9 @@
 const { CheckoutCompletePage } = require('../../pages/CheckoutCompletePage');
-const {test,expext}= require('../../Fixtures/loginFixture');
-
+const {test,expect}= require('../../Fixtures/loginFixture');
 const testData  = require('../../utils/testData');
 
-test('Add product, checkout, complete order and validate success message', async({page,inventoryPage,cartPage,checkoutPage,checkoutCompletePage}) => {
+test('Add product, checkout, complete order and validate success message', 
+    async({page,inventoryPage,cartPage,checkoutPage,checkoutCompletePage}) => {
 
 // Add Products
 
@@ -25,9 +25,9 @@ await cartPage.proceedToCheckOut();
 // Fill Checkout information
 
 await checkoutPage.enterCheckoutInformation(
-testData.checkOut.firstName,
-testData.checkOut.lastName,
-testData.checkOut.postalCode
+testData.checkout.firstName,
+testData.checkout.lastName,
+testData.checkout.postalCode
 );
 
 // Continue
@@ -40,16 +40,16 @@ await checkoutPage.finishOrder();
 
 // Validation
 
-await expect(page).toHaveUrl('/checkout-complete.html/');
+await expect(page).toHaveURL(/checkout-complete.html/);
 
 console.log(await checkoutCompletePage.getOrderHeader());
 
 
-await expect (checkoutCompletePage.getOrderHeader).toHaveText('Thank you for your order!');
+await expect (checkoutCompletePage.orderHeader).toHaveText('Thank you for your order!');
 
-await expect(checkoutCompletePage.getConfirmationmessage());
+console.log(await checkoutCompletePage.getConfirmationMessage());
 
-await expect(checkoutCompletePage.Confirmationmessage).toContainText('Your order has been dispatched');
+await expect(checkoutCompletePage.confirmationMessage).toContainText('Your order has been dispatched');
 
 console.log('******* Order Completed Successfully **************');
 

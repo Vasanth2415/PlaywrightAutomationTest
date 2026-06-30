@@ -2,8 +2,6 @@ class CheckoutPage {
   constructor(page) {
     this.page = page;
 
-    this.page.locator("#first-name").fill("Vasantha");
-
     this.firstName = page.locator("#first-name");
     this.lastName = page.locator("#last-name");
     this.postalCode = page.locator("#postal-code");
@@ -20,7 +18,7 @@ async enterCheckoutInformation(firstName,lastName,postalCode){
     await this.postalCode.fill(postalCode);
 }
 
-async continuCheckout(){
+async continueCheckout(){
 
     await this.continueButton.click();
 }
