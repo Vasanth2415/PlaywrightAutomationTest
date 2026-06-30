@@ -8,7 +8,7 @@ class CartPage{
         this.checkoutBtn = page.locator('[data-test="checkout"]');
     }
 
-    async proceedToCheckout(){
+    async proceedToCheckOut(){
         await this.checkoutBtn.click();
     }
 

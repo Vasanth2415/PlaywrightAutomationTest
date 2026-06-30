@@ -15,7 +15,7 @@ test("Verify the Sort products, add items to cart,and verify cart contents",
 
   console.log("Products sorted by Price (Low to High)");
 
-  for (let i = 0; i < productNames.length(); i++) {
+  for (let i = 0; i < productNames.length; i++) {
     console.log(`${productNames[i]} -${productPrices[i]}`);
   }
 
@@ -23,7 +23,7 @@ test("Verify the Sort products, add items to cart,and verify cart contents",
 
   const sortedPrices = [...prices].sort((a, b) => a - b);
 
-  expect(prices).toEqualTo(sortedPrices);
+  expect(prices).toEqual(sortedPrices);
 
   // Sort by name (A-Z)
 
@@ -55,7 +55,7 @@ test("Verify the Sort products, add items to cart,and verify cart contents",
 
   await expect(inventoryPage.cartItems).toHaveCount(2);
 
-  await expect(inventoryPage.first()).toBeVisible();
+  await expect(inventoryPage.cartItems.first()).toBeVisible();
 
   console.log(await inventoryPage.getCartItems());
 });

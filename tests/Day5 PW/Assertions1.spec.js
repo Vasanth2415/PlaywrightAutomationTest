@@ -7,7 +7,7 @@ const {test,expect} = require('../../Fixtures/loginFixture');
 
 await expect(page).toHaveTitle('Swag Labs');
 
-await expect(page).toHaveUrl('https://www.saucedemo.com/inventory.html');
+await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 
 await expect(inventoryPage.logo).toBeVisible();
 
