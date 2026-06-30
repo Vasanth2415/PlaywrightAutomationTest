@@ -11,8 +11,8 @@ module.exports = {
     afourTitle: 'Software Development Company | Reliability Engineering',
 
     checkout: {
-        firstName: "John",
-        lastName: "Doe",
-        postalCode: "560001"
+        firstName: "Vasantha",
+        lastName: "Kumar",
+        postalCode: "456895"
     }
-}
+};

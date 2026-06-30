@@ -1,9 +1,10 @@
 
-class LoginPage {
+const {GenericPage} = require('./GenericPage');
+class LoginPage extends GenericPage {
 
     constructor(page) {
 
-        this.page = page;
+        super(page);
 
         //Locators
 
@@ -12,11 +13,6 @@ class LoginPage {
         this.loginButton = page.locator('#login-button');
         this.errorMessage = page.locator('[data-test="error"]');
     }
-
-    async navigate(url) {
-        await this.page.goto(url);
-    }
-
 
     async login(Username, Password) {
 
@@ -27,7 +23,7 @@ class LoginPage {
 
 
     async getErrorMessage() {
-        return this.errorMessage.textContent();
+        return await this.errorMessage.textContent();
     }
 
     async getUsernamePlaceholder() {
