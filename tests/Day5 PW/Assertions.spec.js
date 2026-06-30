@@ -40,7 +40,7 @@ test("Verify the Inventory after login", async ({ page }) => {
     const isVisible = await inventory.isVisible();
     console.log('Inventory Visibility is: ', isVisible);
     await expect(inventory).toBeVisible();
-    
+
 
     // Verify 6 inventory items are present on the page
     const productNames = page.locator('.inventory_item_name');

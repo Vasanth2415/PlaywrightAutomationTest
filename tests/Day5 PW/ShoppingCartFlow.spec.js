@@ -57,17 +57,17 @@ test("Verify the Sort products, add items to cart, and verify cart contents", as
     const products = page.locator('.inventory_item_name');
     const count = await products.count();
 
-    const actualProducts=[];
+    const actualProducts = [];
 
-    for(let i=0;i<count;i++){
+    for (let i = 0; i < count; i++) {
         actualProducts.push(await products.nth(i).textContent());
     }
 
-    console.log('Sorted Products A to Z :',actualProducts);
+    console.log('Sorted Products A to Z :', actualProducts);
 
-    const expectedOrder = [...actualProducts].sort((a,b) => a.localeCompare(b));
+    const expectedOrder = [...actualProducts].sort((a, b) => a.localeCompare(b));
 
-  expect(actualProducts).toEqual(expectedOrder);
+    expect(actualProducts).toEqual(expectedOrder);
 
 
 
