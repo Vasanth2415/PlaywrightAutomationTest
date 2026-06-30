@@ -1,5 +1,5 @@
 const { CheckoutCompletePage } = require('../../pages/CheckoutCompletePage');
-const {test,expext}= require('../Fixtures/loginFixture');
+const {test,expext}= require('../../Fixtures/loginFixture');
 
 const testData  = require('../utils/testData');
 

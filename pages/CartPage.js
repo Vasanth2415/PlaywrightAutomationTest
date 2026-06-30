@@ -1,4 +1,4 @@
-class cartPage{
+class CartPage{
 
     constructor(page){
 
