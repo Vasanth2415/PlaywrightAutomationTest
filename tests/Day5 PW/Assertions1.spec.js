@@ -1,6 +1,6 @@
 const { InventoryPage } = require('../../pages/InventoryPage');
-const {test,expect} = require('../Fixtures/loginFixture');
- const testData = require('../utils/testData');
+const {test,expect} = require('../../Fixtures/loginFixture');
+ const testData = require('../../utils/testData');
 
 
  test('Verify Inventory after Login', async({page,inventoryPage}) =>{

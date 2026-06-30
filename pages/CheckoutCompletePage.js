@@ -4,8 +4,8 @@ class CheckoutCompletePage {
 
 this.page = page;
 
-this.orderHeader = await page.locator('.complete-header');
-this.confirmationMessage = await page.locator('.complete-text');
+this.orderHeader = page.locator('.complete-header');
+this.confirmationMessage = page.locator('.complete-text');
 
     }
 

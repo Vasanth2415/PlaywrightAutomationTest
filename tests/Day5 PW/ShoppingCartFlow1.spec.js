@@ -1,14 +1,14 @@
-const { InventoryPage } = require("../../pages/InventoryPage");
-const { test, expect } = require("../loginFixture");
+const { InventoryPage } = require('../../pages/InventoryPage');
+const { test, expect } = require('../../Fixtures/loginFixture');
+const testData = require('../../utils/testData');
 
-test("Verify the Sort products, add items to cart,and verify cart contents", async ({
-  page,
-  inventoryPage,
-}) => {
+test("Verify the Sort products, add items to cart,and verify cart contents", 
+  async ({page,inventoryPage}) => {
+
   //Sort by price (Low to High)
 
-  await inventoryPage.sortProducts("lohi");
-  await expect(inventoryPage.sortDropdown).toHaveValue("lohi");
+  await inventoryPage.sortProducts('lohi');
+  await expect(inventoryPage.sortDropdown).toHaveValue('lohi');
 
   const productNames = await inventoryPage.getProductNames();
   const productPrices = await inventoryPage.getProductPrices();
