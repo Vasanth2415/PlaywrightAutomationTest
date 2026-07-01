@@ -1,21 +1,22 @@
-class CartPage{
+class CartPage {
+  constructor(page) {
+    this.page = page;
 
-    constructor(page){
+    this.cartItems = page.locator(".cart_item");
+    this.checkoutBtn = page.locator('[data-test="checkout"]');
+  }
 
-        this.page = page;
+  async proceedToCheckout() {
+    await this.checkoutBtn.click();
+  }
 
-        this.cartItems = page.locator('.cart_item');
-        this.checkoutBtn = page.locator('[data-test="checkout"]');
-    }
+  async getCartItems() {
+    return this.cartItems.allTextContents();
+  }
 
-    async proceedToCheckOut(){
-        await this.checkoutBtn.click();
-    }
-
-    async getCartItems(){
-        return await this.cartItems.allTextContents();
-    }
-
+  async getCartCount() {
+  return await this.cartItems.count();
+}
 }
 
 module.exports = { CartPage };

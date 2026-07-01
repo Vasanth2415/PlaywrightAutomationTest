@@ -1,47 +1,37 @@
-
-const {GenericPage} = require('./GenericPage');
+const { GenericPage } = require("./GenericPage");
 class LoginPage extends GenericPage {
+  constructor(page) {
+    super(page);
 
-    constructor(page) {
+    //Locators
 
-        super(page);
+    this.usernameInput = page.locator("#user-name");
+    this.passwordInput = page.locator("#password");
+    this.loginButton = page.locator("#login-button");
+    this.errorMessage = page.locator('[data-test="error"]');
+  }
 
-        //Locators
+  async login(username, password) {
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
+  }
 
-        this.usernameInput = page.locator('#user-name');
-        this.passwordInput = page.locator('#password');
-        this.loginButton = page.locator('#login-button');
-        this.errorMessage = page.locator('[data-test="error"]');
-    }
+  async getErrorMessage() {
+    return await this.errorMessage.textContent();
+  }
 
-    async login(Username, Password) {
+  async getUsernamePlaceholder() {
+    return await this.usernameInput.getAttribute("placeholder");
+  }
 
-        await this.usernameInput.fill(Username);
-        await this.passwordInput.fill(Password);
-        await this.loginButton.click();
-    }
+  async getPasswordPlaceholder() {
+    return await this.passwordInput.getAttribute("placeholder");
+  }
 
-
-    async getErrorMessage() {
-        return await this.errorMessage.textContent();
-    }
-
-    async getUsernamePlaceholder() {
-        return await this.usernameInput.getAttribute('placeholder');
-
-    }
-
-    async getPasswordPlaceholder() {
-        
-            return await this.passwordInput.getAttribute('placeholder');
-        }
-
-    async getLoginButtonValue(){
-
-            return await this.loginButton.getAttribute('value');
-        }
-
-    
+  async getLoginButtonValue() {
+    return await this.loginButton.getAttribute("value");
+  }
 }
 
 module.exports = { LoginPage };

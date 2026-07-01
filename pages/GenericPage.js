@@ -1,17 +1,15 @@
 class GenericPage {
+  constructor(page) {
+    this.page = page;
+  }
 
-    constructor(page) {
+  async navigate(url) {
+    await this.page.goto(url);
+  }
 
-        this.page = page;
-    }
-
-    async navigate(url) {
-        await this.page.goto(url);
-    }
-
-    async getTitle() {
-        return this.page.title();
-    }
+  async getTitle() {
+    return this.page.title();
+  }
 }
 
-module.exports = {GenericPage};
+module.exports = { GenericPage };

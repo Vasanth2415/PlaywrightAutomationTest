@@ -1,23 +1,15 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require("../../Fixtures/genericPageFixture");
 
-// Launch Google page and verify the title
-test("Launch Google and verify title", async ({ page }) => {
+const testData = require("../../utils/testData");
 
-    await page.goto('https://www.google.com/')
+test.describe("Page Title Verification", () => {
+  test("Launch Google and verify Title", async ({ genericPage }) => {
+    await genericPage.navigate(testData.googleUrl);
 
-    const pageTitle = await page.title();
+    const pageTitle = await genericPage.getTitle();
 
-    console.log('Page Title is: ', pageTitle);
+    console.log("Google Page Title: ", pageTitle);
 
-    await expect(page).toHaveTitle('Google');
-
-});
-
-
-// Launch A4 page and verify the title
-test("Launch A4 Page and Get Title", async ({ page }) => {
-
-    await page.goto('https://afourtech.com/');
-    console.log(await page.title());
-    await expect(page).toHaveTitle('Software Development Company | Reliability Engineering');
+    await expect(genericPage.page).toHaveTitle(testData.googleTitle);
+  });
 });

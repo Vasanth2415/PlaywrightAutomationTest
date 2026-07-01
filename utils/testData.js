@@ -1,18 +1,12 @@
+const loginData = require("../test-Data/loginData.json");
+const checkoutData = require("../test-Data/checkoutData.json");
+
 module.exports = {
-    url: 'https://www.saucedemo.com/',
-    username: 'standard_user',
-    password: 'secret_sauce',
-    invalidPassword: 'secret',
+    url: "https://www.saucedemo.com/",
 
-    googleUrl: 'https://www.google.com/',
-    googleTitle: 'Google',
+    loginData,
+    checkoutData,
 
-    afourUrl: 'https://afourtech.com/',
-    afourTitle: 'Software Development Company | Reliability Engineering',
-
-    checkout: {
-        firstName: "Vasantha",
-        lastName: "Kumar",
-        postalCode: "456895"
-    }
+    googleUrl: "https://www.google.com/",
+    googleTitle: "Google"
 };

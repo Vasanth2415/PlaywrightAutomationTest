@@ -1,22 +1,24 @@
 class CheckoutCompletePage {
+  constructor(page) {
+    this.page = page;
 
-    constructor(page){
+    this.orderHeader = page.locator(".complete-header");
+    this.confirmationMessage = page.locator(".complete-text");
+  }
 
-this.page = page;
-
-this.orderHeader = page.locator('.complete-header');
-this.confirmationMessage = page.locator('.complete-text');
-
-    }
-
-async getOrderHeader(){
-
-    return await this.orderHeader.textContent();
+ async getOrderHeader() {
+  await this.orderHeader.waitFor({ state: "visible" });
+  return (await this.orderHeader.textContent())?.trim();
 }
 
-async getConfirmationMessage(){
+  async getConfirmationMessage() {
+    await this.confirmationMessage.waitFor({ state: "visible" });
+  return (await this.confirmationMessage.textContent())?.trim();
+  }
 
-    return await this.confirmationMessage.textContent();
+  async expectOrderSuccess() {
+  await expect(this.orderHeader).toBeVisible();
+  await expect(this.confirmationMessage).toBeVisible();
 }
 }
 

@@ -1,94 +1,59 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require("../../Fixtures/loginFixture");
 
-test("Verify the Sort products, add items to cart, and verify cart contents", async ({ page }) => {
+test("Verify the Sort products, add items to cart,and verify cart contents", async ({
+  inventoryPage,
+}) => {
+  //Sort by price (Low to High)
 
-    await page.goto('https://www.saucedemo.com/');
+  await inventoryPage.sortProducts("lohi");
+  await expect(inventoryPage.sortDropdown).toHaveValue("lohi");
 
-    // Login to the application
-    const userName = page.locator('#user-name');
-    const password = page.locator('#password');
-    const loginBtn = page.locator('#login-button');
+  const productNames = await inventoryPage.getProductNames();
+  const productPrices = await inventoryPage.getProductPrices();
 
-    await userName.fill('standard_user');
-    await password.fill('secret_sauce');
-    await loginBtn.click();
+  console.log("Products sorted by Price (Low to High)");
 
-    // Sort Products by Price (low to high)
-    const sortDropdown = page.locator('[data-test="product-sort-container"]');
-    await sortDropdown.selectOption('lohi');
-    await expect(sortDropdown).toHaveValue('lohi');
+  for (let i = 0; i < productNames.length; i++) {
+    console.log(`${productNames[i]} - ${productPrices[i]}`);
+  }
 
-    const productNames = page.locator('.inventory_item_name');
+  const prices = productPrices.map((price) => Number(price.replace("$", "")));
 
-    const productPrices = page.locator('.inventory_item_price');
+  const sortedPrices = [...prices].sort((a, b) => a - b);
 
-    // Display product name and price
-    const names = await productNames.allTextContents();
-    const pricesText = await productPrices.allTextContents();
+  expect(prices).toEqual(sortedPrices);
 
-    console.log('Products sorted by Price (low to high):');
+  // Sort by name (A-Z)
 
-    for (let i = 0; i < names.length; i++) {
+  await inventoryPage.sortProducts("az");
 
-        console.log(`${names[i]}-  ${pricesText[i]}`);
-    }
+  await expect(inventoryPage.sortDropdown).toHaveValue("az");
 
+  const actualProducts = await inventoryPage.getProductNames();
 
-    // Convert the price from $7.99 to 7.99
-    const prices = pricesText.map(price => Number(price.replace('$', ''))
-    );
+  console.log("Products Sorted A-Z");
 
-    console.log('Price Values: ', prices);
+  console.log(actualProducts);
 
-    // Sort the prices in ascending order
-    const sortedPrices = [...prices].sort((a, b) => a - b);
+  const expectedProducts = [...actualProducts].sort((a, b) =>
+    a.localeCompare(b),
+  );
 
-    expect(prices).toEqual(sortedPrices);
+  expect(actualProducts).toEqual(expectedProducts);
 
+  // Add two items
 
+  await inventoryPage.addItemsToCart(2);
 
-    // Sort products by name (A to Z)
+  // Open Cart
 
-    const sortDropdown2 = page.locator('[data-test="product-sort-container"]');
+  await inventoryPage.openCart();
 
-    await sortDropdown2.selectOption('az');
-    await expect(sortDropdown2).toHaveValue('az');
+  // Verify Cart
 
-    const products = page.locator('.inventory_item_name');
-    const count = await products.count();
+  await expect(inventoryPage.cartItems).toHaveCount(2);
 
-    const actualProducts = [];
+  await expect(inventoryPage.cartItems.first()).toBeVisible();
 
-    for (let i = 0; i < count; i++) {
-        actualProducts.push(await products.nth(i).textContent());
-    }
-
-    console.log('Sorted Products A to Z :', actualProducts);
-
-    const expectedOrder = [...actualProducts].sort((a, b) => a.localeCompare(b));
-
-    expect(actualProducts).toEqual(expectedOrder);
-
-
-
-    // Add 2 items to the cart
-
-    const addToCartButtons = page.locator('button[data-test^="add-to-cart"]');
-
-    await addToCartButtons.nth(0).click();
-    await addToCartButtons.nth(1).click();
-
-
-
-    // Verify the items in the cart
-    const cartIcon = page.locator('.shopping_cart_link');
-    await cartIcon.click();
-
-    const cartItems = page.locator('.cart_item');
-    await expect(cartItems).toHaveCount(2);
-    await expect(cartItems.first()).toBeVisible();
-
-    console.log('Items in the Cart: ', await cartItems.allTextContents());
-    console.log('*******************');
-
+  console.log(await inventoryPage.getCartItems());
 });
