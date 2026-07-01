@@ -1,5 +1,6 @@
-const { InventoryPage } = require("../../pages/InventoryPage");
-const { test, expect } = require("../../Fixtures/loginFixture");
+const { InventoryPage } = require('../../pages/InventoryPage');
+const { test, expect } = require('../../Fixtures/loginFixture');
+
 
 test("Verify the Sort products, add items to cart,and verify cart contents", 
   async ({page,inventoryPage}) => {
