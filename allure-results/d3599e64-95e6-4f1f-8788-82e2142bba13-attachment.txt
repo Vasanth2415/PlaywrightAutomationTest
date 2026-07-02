@@ -1,3 +1,0 @@
-Username placeholder:  Username
-Password Placeholder:  Password
-Login button Value:  Login
