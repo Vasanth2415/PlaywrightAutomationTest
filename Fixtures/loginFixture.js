@@ -4,11 +4,11 @@ const { InventoryPage } = require("../pages/InventoryPage");
 const { CartPage } = require("../pages/CartPage");
 const { CheckoutPage } = require("../pages/CheckoutPage");
 const { CheckoutCompletePage } = require("../pages/CheckoutCompletePage");
-
 const testData = require("../utils/testData");
 
 const test = base.extend({
   authenticatedPage: async ({ page }, use) => {
+    
     const loginPage = new LoginPage(page);
 
     // Navigate to application
@@ -23,7 +23,7 @@ const test = base.extend({
     await expect(page).toHaveURL(/inventory/);
 
     // Give the logged-in page to the test
-    console.log("Log in completed successfully");
+    
     await use(page);
 
     // Optional cleanup

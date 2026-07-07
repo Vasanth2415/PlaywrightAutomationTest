@@ -5,6 +5,9 @@ const test = base.extend({
   genericPage: async ({ page }, use) => {
     const genericPage = new GenericPage(page);
 
+     // Navigate to application
+      //  await genericPage.navigate(testData.googleUrl);
+
     await use(genericPage);
   },
 });

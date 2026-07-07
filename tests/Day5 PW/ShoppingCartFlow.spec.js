@@ -11,7 +11,7 @@ test("Verify the Sort products, add items to cart,and verify cart contents", asy
   const productNames = await inventoryPage.getProductNames();
   const productPrices = await inventoryPage.getProductPrices();
 
-  console.log("Products sorted by Price (Low to High)");
+
 
   for (let i = 0; i < productNames.length; i++) {
     console.log(`${productNames[i]} - ${productPrices[i]}`);
@@ -23,6 +23,8 @@ test("Verify the Sort products, add items to cart,and verify cart contents", asy
 
   expect(prices).toEqual(sortedPrices);
 
+  console.log("Products sorted by Price (Low to High)");
+  
   // Sort by name (A-Z)
 
   await inventoryPage.sortProducts("az");

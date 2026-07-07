@@ -2,8 +2,8 @@
 const { test, expect } = require("../../Fixtures/loginFixture");
 
 
-test("Verify Inventory after Login", async ({ authenticatedPage,page, inventoryPage }) => {
-  
+test("Verify Inventory after Login", async ({ authenticatedPage, page, inventoryPage }) => {
+
   await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
   await expect(page).toHaveTitle("Swag Labs");
 
